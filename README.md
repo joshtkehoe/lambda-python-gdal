@@ -105,11 +105,11 @@ Creating the package is a difficult process due to the GDAL dependencies.
     aws configure
     # copy/paste your AWS Access Key when prompted
     # copy/paste your AWS Secret Access Key when prompted
-    # Use us-east-1 for the Default Region Name
-    # Use json for Default Output Format
+    # add your Default Region Name
+    # set your preferred Default Output Format
     aws s3 cp lambda.zip s3://{S3 Bucket Name}/temp_lambda.zip
     ```
 1. Terminate or stop the EC2 instance that you used to create the zip
-1. Add Lambda function code to the root of the zip. This will be your handler and your worker. I may add my function and worker to this project in the future - I just need to sanitize it first and remove all proprietary information. Until then, [this](http://www.perrygeo.com/running-python-with-compiled-code-on-aws-lambda.html) is a good example of calling a worker from a lambda function and adding the dependencies to the library path.
+1. Add Lambda function code to the root of the zip. This will be your handler and your worker. I added a basic stub handler and worker to this project that demonstrates how the Lambda function invokes the worker with GDAL libraries. [Here](http://www.perrygeo.com/running-python-with-compiled-code-on-aws-lambda.html) is another good example of calling a worker from a lambda function and adding the dependencies to the library path.
 
 
