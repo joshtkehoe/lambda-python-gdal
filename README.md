@@ -111,5 +111,6 @@ Creating the package is a difficult process due to the GDAL dependencies.
     ```
 1. Terminate or stop the EC2 instance that you used to create the zip
 1. Add Lambda function code to the root of the zip. This will be your handler and your worker. I added a basic stub handler and worker to this project that demonstrates how the Lambda function invokes the worker with GDAL libraries. [Here](http://www.perrygeo.com/running-python-with-compiled-code-on-aws-lambda.html) is another good example of calling a worker from a lambda function and adding the dependencies to the library path.
+1. Please make note of how I'm using a subprocess to shell out gdal in a different Python script and how I'm setting the LD_LIBRARY_PATH and PATH. I had to do it this way because if I had it all in one script, the Lambda was unable to find gdal on the path. For some reason, setting LD_LIBRARY_PATH as an environment variable is not respected unless you shell it out.
 
 
